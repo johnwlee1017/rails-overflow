@@ -9,6 +9,20 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <ul>
+          <% if logged_in? %>
+            <%= link_to "Home", questions_path %>
+            <%= link_to "edit", edit_user_path(session[:id]) %>
+            <%= link_to "logout", session_path(session[:id]), method: "delete" %>
+          <% else %>
+            <%= link_to "sign in", new_user_path %>
+            <%= link_to "login", new_session_path %>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
